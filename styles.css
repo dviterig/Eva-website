@@ -1,146 +1,166 @@
-/* Reset and Base Styles */
-* {
+/* General styles */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Sans', sans-serif;
+    scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    color: #2c3e50;
-    background-color: #f5f6fa;
-    line-height: 1.6;
-}
-
-/* Container Layout */
-.container {
+/* Navigation bar styles */
+header {
+    font-size: 1.2em;
+    position: sticky;
+    background-color: #333;
+    padding: 10px 20px;
+    font-family: 'Lato', sans-serif;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+/* Section styles */
+section {
+    font-size: 1.3em;
     min-height: 100vh;
+    padding: 20px;
+    color: white;
 }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 280px;
-    background-color: #34495e;
-    color: #ecf0f1;
-    padding: 30px 20px;
+#title {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
 }
 
-.sidebar-header {
-    text-align: center;
-    margin-bottom: 20px;
+#title img {
+    width: 200px; /* Set the desired width */
 }
 
-.sidebar-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    margin-bottom: 10px;
+#navbar {
+    display: flex;
+    gap: 20px;
 }
 
-.sidebar-header p {
-    font-size: 14px;
-    color: #bdc3c7;
-}
-
-.sidebar nav ul {
-    list-style: none;
-}
-
-.sidebar nav ul li {
-    margin: 20px 0;
-}
-
-.sidebar nav ul li a {
-    color: #ecf0f1;
+#navbar a {
+    color: white;
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    display: block;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
 }
 
-.sidebar nav ul li a:hover,
-.sidebar nav ul li a.active {
-    background-color: #1abc9c;
-    color: #fff;
+#navbar a:hover {
+    text-decoration: underline;
 }
 
-/* Main Content Styling */
-.main-content {
-    flex: 1;
-    padding: 50px;
-    background-color: #fff;
-    overflow-y: auto;
+#home {
+    background-color: #F5D8B2;
+    color: black;
 }
 
-.main-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
+#overmij {
+    background-color: #AF5226;
+}
+
+#cursussen {
+    background-color: #FF914D;
+    min-height: 45vh;
+}
+
+#werkervaring {
+    background-color: #4C8F30;
+    min-height:0vh;
+}
+
+#opleidingen {
+    background-color: #4C8F30;
+    min-height: 45vh;
+}
+
+#tarieven {
+    background-color: #F5D8B2;
+    color: black;
+    min-height: 62vh;
+}
+
+#contact {
+    background-color: #AF5226;
+    min-height: 0vh;
+}
+
+/* Content within sections */
+.section-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.section-title {
+    font-family: 'Sans', sans-serif;
+    font-size: 2.5em;
+    margin-top: 20px;
     margin-bottom: 20px;
-    color: #34495e;
-    text-align: center;
 }
 
-.main-content h2 {
-    font-size: 24px;
-    margin-top: 30px;
-    color: #1abc9c;
-    border-bottom: 2px solid #ecf0f1;
-    padding-bottom: 5px;
-    text-align: center;
+/* Image styles */
+.section-image {
+    display: block;
+    border-radius: 7px; /* Adjust the value for more or less rounding */
 }
 
-.main-content p {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 200px;
-    margin-right: 200px;
-    font-size: 16px;
-    color: #2c3e50;
-    text-align: left;
+#home .section-image {
+    width: 300px;
+    margin: 60px auto;
 }
 
-.main-content li {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 600px;
-    margin-right: 600px;
-    font-size: 16px;
-    color: #2c3e50;
-    text-align: left;
+#overmij .section-image {
+    width: 500px;
+    margin: 40px auto;
 }
 
-.image-container {
-    margin: 20px 0;
-    text-align: center;
+#cursussen .section-image {
+    width: 500px;
+    margin: 20px auto;
 }
 
-.image-container img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+#contact .section-image {
+    width: 400px;
+    margin: 20px auto;
 }
 
-.image-container img:hover {
-    transform: scale(1.02);
-}
+/* General responsive styles for mobile */
+@media (max-width: 768px) {
+    /* Navigation bar adjustments */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
 
-.caption {
-    font-size: 14px;
-    color: #7f8c8d;
-    margin-top: 8px;
+    #title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    #navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #navbar a {
+        font-size: 1em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+
+    /* Image adjustments */
+    .section-image {
+        max-width: 80%; /* Make images slightly smaller on mobile */
+        border-radius: 10px; /* Slightly adjust the radius for smaller screens */
+    }
 }
 
 /* Footer Styling */
 footer {
-    background-color: #34495e;
+    background-color: #333;
     color: #ecf0f1;
     text-align: center;
     padding: 15px 0;

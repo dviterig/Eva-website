@@ -1,7 +1,6 @@
 // Content for each section
 const content = {
     home: {
-        title: "Everdina Petronela Bernarda",
         body: [
             {
                 type: "image",
@@ -10,7 +9,7 @@ const content = {
             },
             {
                 type: "paragraph",
-                content: "“Rouwen doe je zelf, maar je hoeft het niet alleen te doen”"
+                content: "“Rouwen doe je zelf, maar je hoeft het niet alleen te doen”",
             },
             {
                 type: "paragraph",
@@ -103,32 +102,10 @@ const content = {
         ]
     },
     opleidingen: {
-        title: "Opleidingen",
+        title: "Opleidingen & Cursussen",
         body: [
-            {
-                type: "list",
-                items: [
-                    "Post HBO Opleiding Rouw en Verliesbegeleiding",
-                    "Post HBO Loopbaanadvies",
-                    "Post HBO Mediation",
-                    "Post HBO Casemanagement"
-                ]
-            }
-        ]
-    },
-    cursussen: {
-        title: "Cursussen en Trainingen",
-        body: [
-            {
-                type: "list",
-                items: [
-                    "Cursus systemisch werken bij rouw en verlies",
-                    "Deelnemer netwerkgroep Kanker & Werk (HAN)",
-                    "Workshop Training acteur",
-                    "Training Organisatiecoach",
-                    "Training Oplossingsgericht coachen"
-                ]
-            }
+            { type: "list", items: ["Post HBO Opleiding Rouw en Verliesbegeleiding", "Post HBO Loopbaanadvies", "Post HBO Mediation", "Post HBO Casemanagement"] },
+            { type: "list", items: ["Cursus systemisch werken bij rouw en verlies", "Deelnemer netwerkgroep Kanker & Werk (HAN)", "Workshop Training acteur", "Training Organisatiecoach", "Training Oplossingsgericht coachen"] }
         ]
     },
     werkervaring: {
@@ -179,87 +156,70 @@ const content = {
                 content: "Rouwbegeleiding consult (75 minuten) is € 105,-- exclusief BTW"
             }
         ]
+    },
+    contact: {
+        title: "Contact",
+        body: [
+            {
+                type: "paragraph",
+                content: "email: info@aandachtbijrouw.nl"
+            },
+            {
+                type: "paragraph",
+                content: "Telefoon: 0625515986"
+            }
+        ]
     }
 };
 
-// Function to update main content
-function updateContent(section) {
-    const mainContent = document.getElementById('main-content');
-    const sectionContent = content[section];
-    
-    let html = `
-        <h1>${sectionContent.title}</h1>
-    `;
-    
-    // If the body is an array, iterate and render each block
-    if (Array.isArray(sectionContent.body)) {
-        sectionContent.body.forEach(block => {
-            switch(block.type) {
-                case "header":
-                    html += `<h2>${block.content}</h2>`;
-                    break;
-                case "paragraph":
-                    html += `<p>${block.content}</p>`;
-                    break;
-                case "image":
-                    html += `
-                        <div class="image-container">
-                            <img src="${block.src}" alt="${block.alt || sectionContent.title}">
-                            ${block.caption ? `<p class="caption">${block.caption}</p>` : ''}
-                        </div>
-                    `;
-                    break;
-                case "list":
-                    html += `<ul class="bullet-list">`;
-                    block.items.forEach(item => {
-                        html += `<li>${item}</li>`;
+// Function to render content for each section
+function renderContent() {
+    Object.keys(content).forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        const sectionData = content[sectionId];
+        
+        if (section) {
+            const contentDiv = document.createElement("div");
+            contentDiv.className = "section-content";
+            
+            // Title
+            const title = document.createElement("h2");
+            title.className = "section-title";
+            title.textContent = sectionData.title;
+            contentDiv.appendChild(title);
+
+            // Body content
+            sectionData.body.forEach(item => {
+                if (item.type === "paragraph") {
+                    const paragraph = document.createElement("p");
+                    paragraph.textContent = item.content;
+                    contentDiv.appendChild(paragraph);
+                } else if (item.type === "image") {
+                    const image = document.createElement("img");
+                    image.src = item.src;
+                    image.alt = item.alt;
+                    image.className = "section-image"; // Add a CSS class instead of inline style
+                    contentDiv.appendChild(image);
+                } else if (item.type === "list") {
+                    const list = document.createElement("ul");
+                    item.items.forEach(listItem => {
+                        const li = document.createElement("li");
+                        li.textContent = listItem;
+                        list.appendChild(li);
                     });
-                    html += `</ul>`;
-                    break;
-                case "quote":
-                    html += `<blockquote>${block.content}</blockquote>`;
-                    break;
-                // Add more types if needed (e.g., video, link)
-                default:
-                    console.warn(`Unknown block type: ${block.type}`);
-            }
-        });
-    } else {
-        // If the body is a string, render it as a single paragraph
-        html += `<p>${sectionContent.body}</p>`;
-    }
-    
-    mainContent.innerHTML = html;
-}
+                    contentDiv.appendChild(list);
+                } else if (item.type === "header") {
+                    const header = document.createElement("h3");
+                    header.textContent = item.content;
+                    contentDiv.appendChild(header);
+                }
+            });
 
-// Function to remove 'active' class from all links
-function clearActiveLinks() {
-    document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
-        link.classList.remove('active');
+            section.appendChild(contentDiv);
+        }
     });
 }
 
-// Function to update main content and active link
-function handleLinkClick(section, clickedLink) {
-    updateContent(section);
-    clearActiveLinks();
-    clickedLink.classList.add('active');
-}
 
-// Add event listeners to sidebar links
-document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const section = this.getAttribute('data-content');
-        handleLinkClick(section, this);
-    });
-});
-
-// Initialize the Home content on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const homeSection = 'home';
-    const homeLink = document.querySelector(`.sidebar nav ul li a[data-content="${homeSection}"]`);
-    if (homeLink) {
-        handleLinkClick(homeSection, homeLink);
-    }
-});
+// Load the content when the page loads
+window.onload = renderContent;

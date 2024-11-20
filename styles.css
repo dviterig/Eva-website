@@ -1,4 +1,7 @@
 /* General styles */
+html {
+    scroll-padding-top: 49px;
+}
 body {
     margin: 0;
     width: 100%;
@@ -6,9 +9,11 @@ body {
     font-family: 'Sans', sans-serif;
 
     header {
+        position: sticky;
+        top: 0;
         display: flex;              /* by default: flex-direction: row; */
         align-items: center;        /* centers (row) vertically */
-        padding: 15px 20px;
+        padding: 10px 15px;
         background-color: #AF5226;
 
         img {

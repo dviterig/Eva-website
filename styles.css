@@ -15,6 +15,7 @@ body {
   font-family: 'Sans', sans-serif;
 
   section {
+    margin: 0;
     display: flex;
     flex-direction: column;  /* Arrange items in a column */
     justify-content: flex-start; /* Align content to the top */
@@ -25,9 +26,11 @@ body {
     min-height: 100vh; /* Ensures each section is at least the full screen height */
 
     article {
+      display: flex;
       gap: 20px;
 
       p {
+        margin: 0;
         padding: 15px 20px;
         border-radius: 15px;
       }
@@ -110,6 +113,10 @@ body {
   background-color: #F8F2EA;
 }
 
+#home-content {
+  display: block;
+}
+
 #home-content img {
   width: 300px;
   margin: 0 auto;      /* Centers horizontally */
@@ -128,8 +135,7 @@ body {
 #overeva-content {
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  align-items: flex-start; /* or center, baseline, etc. */
+  align-items: center;
 }
 
 #overeva-content p {
@@ -145,6 +151,10 @@ body {
   color: #F8F2EA;
 }
 
+#cursussen-content {
+  flex-direction: column;
+}
+
 #cursussen-content p {
   color: #AF5226;
   background-color: #F8F2EA;
@@ -155,12 +165,12 @@ body {
   background-color: #4C8F30;
 }
 
-#werkervaring h2 {
-  color: #F8F2EA;
+#werkervaring-content {
+  flex-direction: column;
 }
 
-#werkervaring-content div {
-  gap: 20px;
+#werkervaring h2 {
+  color: #F8F2EA;
 }
 
 #werkervaring-content p {
@@ -171,6 +181,10 @@ body {
 /* Tarieven section */
 #tarieven {
   background-color: #F8F2EA;
+}
+
+#tarieven-content {
+  display:block;
 }
 
 #tarieven h2 {

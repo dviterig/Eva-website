@@ -38,10 +38,12 @@ body {
   }
 
   footer {
-    display: flex;        /* by default: flex-direction: row; */
-    justify-content: center;  /* centers horizontally */
-    width: 100%;
-    font-size: 14px;
+    display: flex;
+    flex-direction: column;  /* Arrange items in a column */
+    justify-content: center; /* Centers content vertically */
+    align-items: center;     /* Centers content horizontally */
+    padding-top: 20px;
+    font-size: 18px;
     color: #F8F2EA;
     background-color: #AF5226;
   }
@@ -213,6 +215,10 @@ body {
   flex-direction: column;   /* Arrange items in a column */
   align-items: center;    /* Centers (column) horizontally */
   color: #F8F2EA;
+}
+
+#footer-text {
+  font-size: 15px;
 }
 
 /* Responsive Styles */

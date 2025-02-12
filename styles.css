@@ -108,6 +108,73 @@ body {
   text-decoration: underline;
 }
 
+#hamburger-button {
+  display: none;
+  position: fixed;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 20;
+}
+
+/* Turn the button into a white circle */
+#hamburger-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40px;            /* you can adjust as needed */
+  height: 40px;           /* same width and height makes a circle */
+  gap: 6px;
+  border: 1.4px solid black;
+  border-radius: 100%;     /* circle */
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* The 3 bars of the hamburger icon */
+#hamburger-button span {
+  display: block;
+  width: 20px;
+  height: 1.4px;
+  background: black;
+}
+
+/* Sidebar is off-canvas by default */
+#sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: transparent;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+  transform: translateX(100%);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 24px;
+  font-weight: 600;
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* When sidebar is opened, slide it in + change background color */
+#sidebar.open {
+  transform: translateX(0);
+  background-color: rgba(255, 255, 255, 0.8); /* or solid white, etc. */
+}
+
 /* Home section */
 #home {
   background-color: #F8F2EA;
@@ -218,11 +285,21 @@ body {
     display: none;
   }
 
+  #hamburger-button {
+    display: flex;
+  }
+
   #overeva-content {
     flex-direction: column;
   }
 
   #werkervaring-content div {
     flex-direction: column;
+  }
+}
+
+@media (min-width: 1029px) {
+  #sidebar {
+    display: none;
   }
 }

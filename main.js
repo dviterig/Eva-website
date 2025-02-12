@@ -31,6 +31,39 @@ window.addEventListener('scroll', () => {
 });
 
 /*******************
+ * SIDEBAR LOGIC
+ *******************/
+const sidebar = document.getElementById('sidebar');
+const sidebarLinks = document.querySelectorAll('#sidebar a');
+const hamburgerButton = document.getElementById('hamburger-button');
+const hamburgerBtn = hamburgerButton.querySelector('button');
+
+// Toggle sidebar on hamburger button click
+hamburgerBtn.addEventListener('click', (event) => {
+  event.stopPropagation();
+  sidebar.classList.toggle('open');
+});
+
+// Hide the sidebar when a link inside it is clicked
+sidebarLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+  });
+});
+
+// Close sidebar if clicking outside of it
+document.addEventListener('click', (event) => {
+  if (!sidebar.contains(event.target) && !hamburgerButton.contains(event.target)) {
+    sidebar.classList.remove('open');
+  }
+});
+
+// Prevent sidebar clicks from closing it
+sidebar.addEventListener('click', (event) => {
+  event.stopPropagation();
+});
+
+/*******************
  * FOOTER YEAR
  *******************/
 document.addEventListener("DOMContentLoaded", () => {

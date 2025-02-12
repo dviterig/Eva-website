@@ -10,31 +10,25 @@ body {
 
   section {
     display: flex;
-    flex-direction: column;   /* Arrange items in a column */
-    padding: 0 3.0%;
-    padding-bottom: 30px;
+    flex-direction: column;  /* Arrange items in a column */
+    justify-content: center; /* Centers content vertically */
+    align-items: center;     /* Centers content horizontally */
+    padding: 50px 5%; /* Top & Bottom = 50px, Left & Right = 5% */
     font-size: 18px;
     color: #AF5226;
+    min-height: 100vh; /* Ensures each section is at least the full screen height */
+    gap: 0.5rem;
+  }
 
-    div {
-      padding: 0 3.0%;
-    }
+  h2 {
+    margin: 0 auto;   /* centers horizontally */
+    padding: 15px 0;
+    font-family: 'Verdana', sans-serif;
+    font-size: 50px;
+  }
 
-    h2 {
-      margin: 0 auto;   /* centers horizontally */
-      padding: 15px 0;
-      font-family: 'Verdana', sans-serif;
-      font-size: 50px;
-    }
-
-    h3 {
-      padding-top: 15px;
-    }
-
-    p {
-      margin: 0;
-      border-radius: 15px;
-    }
+  p {
+    border-radius: 15px;
   }
 
   footer {
@@ -153,7 +147,6 @@ body {
 
 #cursussen img {
   max-width: 450px;
-  margin-top: 20px;
   border-radius: 10px;
 }
 
@@ -182,7 +175,6 @@ body {
 #werkervaring img {
   max-width: 450px;
   margin: 0 auto;   /* centers horizontally */
-  margin-top: 20px;
   border-radius: 10px;
 }
 
